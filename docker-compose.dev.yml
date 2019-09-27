@@ -1,0 +1,15 @@
+version: '3'
+services:
+  server:
+    image: node:10
+    container_name: server
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=production
+      - PORT=8003
+    working_dir: /usr/src/app
+    command: bash -c "yarn install && yarn start"
+    ports:
+      - '8003:8003'
