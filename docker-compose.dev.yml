@@ -9,6 +9,7 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=8003
+      - TS_NODE_FILES=true
     working_dir: /usr/src/app
     command: bash -c "yarn install && yarn start"
     ports:
