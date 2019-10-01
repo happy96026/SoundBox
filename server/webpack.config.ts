@@ -1,7 +1,7 @@
-import path from 'path'
-import webpack from 'webpack'
-import nodeExternals from 'webpack-node-externals'
+import * as path from 'path'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import webpack = require('webpack')
+import nodeExternals = require('webpack-node-externals')
 
 const config: webpack.Configuration = {
   entry: ['webpack-hot-middleware/client', './src/app'],
