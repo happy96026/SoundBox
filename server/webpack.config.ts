@@ -5,7 +5,7 @@ import nodeExternals = require('webpack-node-externals')
 import ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 const config: webpack.Configuration = {
-  entry: ['webpack/hot/poll?1000', './src/index'],
+  entry: ['webpack/hot/signal', './src/index'],
   target: 'node',
   node: {
     __filename: true,
@@ -13,7 +13,7 @@ const config: webpack.Configuration = {
   },
   externals: [
     nodeExternals({
-      whitelist: ['webpack/hot/poll?1000']
+      whitelist: ['webpack/hot/signal']
     })
   ],
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',

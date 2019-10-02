@@ -11,7 +11,8 @@ async function main (): Promise<any> {
     const compiler = webpack(webpackConfig)
 
     compiler.hooks.done.tap('ServerHMRPlugin', _ => {
-      console.log('Testing hook')
+      console.log('Sending signal SIGUSR2...')
+      process.kill(process.pid, 'SIGUSR2')
     })
 
     compiler.watch({}, () => {})
