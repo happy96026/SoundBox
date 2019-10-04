@@ -1,9 +1,9 @@
-import express = require('express')
+import express from 'express'
 
 const app = express()
 
 app.get('/', (_, res) => {
-  res.send('hi\n')
+  res.send('heee\n')
 })
 
 export { app }

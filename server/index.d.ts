@@ -1,4 +1,1 @@
-declare module 'webpack-node-externals' {
-  function nodeExternals(options: any): any
-  export = nodeExternals
-}
+declare module 'webpack-node-externals'

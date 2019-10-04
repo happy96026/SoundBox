@@ -1,8 +1,8 @@
 import * as path from 'path'
+import webpack from 'webpack'
+import nodeExternals from 'webpack-node-externals'
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
-import webpack = require('webpack')
-import nodeExternals = require('webpack-node-externals')
-import ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 const config: webpack.Configuration = {
   entry: ['webpack/hot/signal', './src/index'],
@@ -22,20 +22,13 @@ const config: webpack.Configuration = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: true
-            }
-          }
-        ],
+        use: 'babel-loader',
         exclude: /node_modules/
       }
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.json']
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.json']
   },
   output: {
     filename: 'bundle.js',
