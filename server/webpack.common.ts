@@ -5,19 +5,13 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 
 const config: webpack.Configuration = {
-  entry: ['webpack/hot/signal', './src/index'],
+  entry: ['./src/index'],
   target: 'node',
   node: {
     __filename: true,
     __dirname: true
   },
-  externals: [
-    nodeExternals({
-      whitelist: ['webpack/hot/signal']
-    })
-  ],
-  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-  devtool: 'inline-source-map',
+  externals: [nodeExternals()],
   module: {
     rules: [
       {
@@ -34,12 +28,7 @@ const config: webpack.Configuration = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new CleanWebpackPlugin(),
-    new ForkTsCheckerWebpackPlugin()
-  ]
+  plugins: [new CleanWebpackPlugin(), new ForkTsCheckerWebpackPlugin()]
 }
 
 export default config

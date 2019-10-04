@@ -8,9 +8,9 @@ services:
       - /usr/src/app/node_modules
     environment:
       - NODE_ENV=development
-      - PORT=8003
+      - PORT=8000
       - TS_NODE_FILES=true
     working_dir: /usr/src/app
     command: bash -c "yarn install && yarn build && yarn start"
     ports:
-      - '8003:8003'
+      - '8003:8000'

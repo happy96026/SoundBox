@@ -1,14 +1,14 @@
 import { app } from './app'
 
 const HOST = '0.0.0.0'
-const PORT = process.env.PORT === undefined ? 8003 : Number(process.env.PORT)
+const PORT = process.env.PORT === undefined ? 8000 : Number(process.env.PORT)
 
 async function main (): Promise<any> {
   let currentApp = app
 
   if (process.env.NODE_ENV === 'development') {
     const { default: webpack } = await import('webpack')
-    const { default: webpackConfig } = await import('../webpack.config')
+    const { default: webpackConfig } = await import('../webpack.dev')
 
     const compiler = webpack(webpackConfig)
 
